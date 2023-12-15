@@ -8,7 +8,7 @@ clear
 echo "测试脚本聚合框架 V1.0 by VPSLOG"
 echo "Github：https://github.com/vpslog/benchframe"
 echo "运行：bash <(curl https://raw.githubusercontent.com/vpslog/benchframe/main/benchframe.sh)"
-echo  -e  "教程：\n\n"
+echo  -e  "教程：https://blog.vpslog.org/blog/benchframe/\n"
 # 记录脚本开始时间
 start_time=$(date +%s.%N)
 
@@ -45,8 +45,9 @@ done
 if [ "$USE_SCREEN" = true ]; then
 
   echo "安装 screen"
-  apt update > /dev/null 2>&1 && apt install screen -y > /dev/null 2>&1
-  echo "后台运行，请用 screen -r bench 命令查看运行状态"
+  # apt update > /dev/null 2>&1 && apt install screen -y > /dev/null 2>&1
+  apt update && apt install screen -y
+  echo "脚本已进入后台运行，请用 screen -r bench 命令查看运行状态，本窗口可以关闭"
   
   # 保存所有参数到变量，并从 ALL_ARGS 中去掉 -d 参数
   SCREEN_ARGS=("${ALL_ARGS[@]/-d}")
