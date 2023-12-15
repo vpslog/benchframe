@@ -60,7 +60,6 @@ if [ "$USE_SCREEN" = true ]; then
   exit
 fi
 
-
 # 保存脚本执行结果的数组
 script_outputs=()
 
@@ -100,17 +99,20 @@ run_script() {
 
 # 执行所有脚本
 run_script "https://bench.sh" 
-run_script "https://bash.icu/speedtest" '2\n'
+run_script "https://bash.icu/gb5" "1\n"
+run_script "https://bench.im/hyperspeed" '\n\n'
 run_script "https://raw.githubusercontent.com/vpslog/benchframe/main/besttarce.sh"
 run_script "https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh"
 run_script "https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh" "1\n"
+# 此脚本似乎有问题，不能自动退出
+# run_script "https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh" '2\n'
 
 # 提交结果，注意 cat 命令输出时包含了空字节（null byte），而 Bash 不支持在命令替换中处理空字节，使用 tr 命令来删除文件中的空字节
 CONTENT=$(cat "${script_outputs[@]}" |  tr -d '\000' |  sed 's/\x1b\[[0-9;]*m//g')
 
 # 提交结果并提取返回值，注意 \n 不能直接写，直接提交似乎会有问题
 # 将内容保存到临时文件
-echo -e "测试脚本聚合框架 by VPSLOG"$'\n'"Github：https://github.com/vpslog/benchframe"$'\n'"运行："$'\n'"教程："$'\n\n\n'"$CONTENT" > temp_result_file.txt
+echo -e "测试脚本聚合框架 by VPSLOG"$'\n'"Github：https://github.com/vpslog/benchframe"$'\n'"运行：bash <(curl https://raw.githubusercontent.com/vpslog/benchframe/main/benchframe.sh)"$'\n'"教程：https://blog.vpslog.org/blog/benchframe/"$'\n\n'"$CONTENT" > temp_result_file.txt
 
 # 使用 curl 提交内容
 RESULT=$(curl -Fc=@temp_result_file.txt "$PASTEBIN_URL")
