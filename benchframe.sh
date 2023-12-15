@@ -56,7 +56,7 @@ if [ "$USE_SCREEN" = true ]; then
   curl -sL "https://raw.githubusercontent.com/vpslog/benchframe/main/benchframe.sh" > benchframe.sh
 
   # 使用 screen 运行 benchframe.sh，并传递所有参数
-  screen -dmS bench bash -c "bash benchframe.sh ${SCREEN_ARGS[*]} && exit"
+  screen -dmS bench bash -c "bash benchframe.sh ${SCREEN_ARGS[*]}"
   exit
 fi
 
