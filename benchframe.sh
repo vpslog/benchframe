@@ -65,11 +65,13 @@ script_outputs=()
 
 # 函数定义：下载脚本到临时文件并执行替换操作
 run_script() {
-  local script_url="$1"
+  local script_name="$1"
+  local script_url="$2"
   local temp_file=$(mktemp)
   local output_file="${counter}_output.txt"
-  local interactive_input="$2"
+  local interactive_input="$3"
 
+  echo "####### 执行 $script_name 脚本 #######"
   # 下载脚本到临时文件
   curl -sL "$script_url" > "$temp_file"
 
@@ -98,12 +100,12 @@ run_script() {
 }
 
 # 执行所有脚本
-run_script "https://bench.sh" 
-run_script "https://bash.icu/gb5" "1\n"
-run_script "https://bench.im/hyperspeed" '\n\n'
-run_script "https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh"
-run_script "https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh" "1\n"
-run_script "https://raw.githubusercontent.com/vpslog/benchframe/main/besttarce.sh"
+run_script "基本测试" "https://bench.sh" 
+run_script "GB5 测试" "https://bash.icu/gb5" "1\n"
+run_script "三网测速" "https://bench.im/hyperspeed" '\n\n'
+run_script "线路测试" "https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh"
+run_script "流媒体解锁测试" "https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh" "1\n"
+run_script "回程路由测试" "https://raw.githubusercontent.com/vpslog/benchframe/main/besttarce.sh"
 # 此脚本似乎有问题，不能自动退出
 # run_script "https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh" '2\n'
 
