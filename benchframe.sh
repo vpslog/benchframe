@@ -10,7 +10,7 @@ echo "Github：https://github.com/vpslog/benchframe"
 echo "运行：bash <(curl https://raw.githubusercontent.com/vpslog/benchframe/main/benchframe.sh)"
 echo  -e  "教程：https://blog.vpslog.org/blog/benchframe/\n"
 # 记录脚本开始时间
-start_time=$(date +%s.%N)
+start_time=$(date +%s)
 
 # 默认 copyright 为空字符串
 COPYRIGHT=""
@@ -127,13 +127,14 @@ URL=$(echo "$RESULT" | grep -o '"url": "[^"]*' | awk -F'"' '{print $4}')
 ADMIN=$(echo "$RESULT" | grep -o '"admin": "[^"]*' | awk -F'"' '{print $4}')
 
 # 记录脚本结束时间
-end_time=$(date +%s.%N)
+end_time=$(date +%s)
 
-# 计算脚本执行时间（分和秒），bc 不支持小数点
-duration_seconds=$(echo "$end_time - $start_time" | bc)
-duration_seconds_rounded=$(printf "%.0f" "$duration_seconds")
-duration_minutes=$((duration_seconds_rounded / 60))
-duration_seconds_remainder=$((duration_seconds_rounded % 60))
+# 计算执行时间（秒）
+duration_seconds=$((end_time - start_time))
+
+# 计算分钟和剩余秒数
+duration_minutes=$((duration_seconds / 60))
+duration_seconds_remainder=$((duration_seconds % 60))
 echo "脚本执行时间: $duration_minutes 分 $duration_seconds_remainder 秒"
 # 打印结果
 echo "结果链接: $URL"
