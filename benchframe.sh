@@ -106,7 +106,8 @@ run_script "FIO 测试" "https://raw.githubusercontent.com/vpslog/benchframe/mai
 run_script "三网测速" "https://bench.im/hyperspeed" '\n\n'
 run_script "教育网测速" "https://bench.im/hyperspeed" '6\n\n'
 run_script "线路测试" "https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh"
-run_script "流媒体解锁测试" "https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh" "1\n"
+# run_script "流媒体解锁测试" "https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh" "1\n"
+run_script "流媒体解锁测试" "https://media.ispvps.com" "1\n"
 run_script "回程路由测试" "https://raw.githubusercontent.com/vpslog/benchframe/main/besttarce.sh"
 # 此脚本似乎有问题，不能自动退出
 # run_script "https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh" '2\n'
