@@ -101,10 +101,10 @@ run_script() {
 
 # 执行所有脚本
 run_script "基本测试" "https://bench.sh" 
-run_script "GB5 测试" "https://bash.icu/gb5" "1\n"
+run_script "GB5 测试" "https://raw.githubusercontent.com/i-abc/GB5/main/gb5-test.sh" "1\n"
 run_script "FIO 测试" "https://raw.githubusercontent.com/vpslog/benchframe/main/fio.sh"
-run_script "三网测速" "https://bench.im/hyperspeed" '\n\n'
-run_script "教育网测速" "https://bench.im/hyperspeed" '6\n\n'
+run_script "三网测速" "https://raw.githubusercontent.com/i-abc/Speedtest/main/speedtest.sh" '2\n\n'
+# run_script "教育网测速" "https://bench.im/hyperspeed" '6\n\n'
 run_script "线路测试" "https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh"
 # run_script "流媒体解锁测试" "https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh" "1\n"
 run_script "流媒体解锁测试" "https://media.ispvps.com" "1\n"
